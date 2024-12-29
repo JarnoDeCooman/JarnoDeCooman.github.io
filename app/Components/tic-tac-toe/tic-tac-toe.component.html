@@ -1,0 +1,44 @@
+<div class="game-container">
+  <h1>Tic-Tac-Toe</h1>
+
+  <!-- AI starts selector -->
+  <div class="option-container">
+    <label for="aiStarts">AI starts:</label>
+    <select id="aiStarts" (change)="onAiStartsChange($event)">
+      <option value="false">Player starts</option>
+      <option value="true">AI starts</option>
+    </select>
+  </div>
+
+  <!-- Difficulty selector -->
+  <div class="option-container">
+    <label for="difficulty">Choose difficulty:</label>
+    <select id="difficulty" (change)="updateDifficulty($event)" [value]="difficulty">
+      <option value="5">Easy</option>
+      <option value="10" selected>Unbeatable</option>
+    </select>
+  </div>
+    
+  <!-- Game Over Section -->
+    @if (gameOver) {
+      <h2>{{ winner ? 'Player ' + winner + ' wins!' : "It's a draw!" }}</h2>
+      <button (click)="resetGame()">Play Again</button>
+    }
+  @else {
+    
+    <div class="board">
+        @for (row of board; track $index; let c = $index) {
+      <div class="row" >
+        @for (cell of row; track cell; let idx = $index) {
+        <div class="cell"  (click)="makeMove(c, idx)">
+          {{ cell }}
+        </div>}
+      </div>}
+    </div>
+    <div class="current-player">
+      <p>Current Player: {{ currentPlayer }}</p>
+    </div>
+}
+  </div>
+  
+  

@@ -1,0 +1,130 @@
+/* General Reset */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+/* Quiz Container */
+.quiz-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Title */
+.quiz-title {
+    font-size: 1.8rem;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Question Text */
+.question-text {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    color: #34495e;
+}
+
+/* Question Image */
+.question-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: 15px 0;
+}
+
+/* Options List */
+.options-list {
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(2, 1fr); 
+    max-width: 100%;
+}
+
+/* Responsive grid for smaller screens or fewer options */
+@media (max-width: 400px) {
+    .options-list {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+/* Option Buttons */
+.option-item {
+    text-align: center;
+}
+
+.option-btn {
+    width: 100%;
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: #2c3e50;
+    background: #ecf0f1;
+    border: 2px solid #bdc3c7;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.option-btn:hover {
+    background: #dfe6e9;
+    border-color: #95a5a6;
+}
+
+.option-btn.selected {
+    background: #2ecc71;
+    color: #ffffff;
+    border-color: #27ae60;
+    font-weight: bold;
+}
+
+/* Submit Button */
+.submit-btn {
+    margin-top: 20px;
+    padding: 10px 30px;
+    font-size: 1rem;
+    background: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.submit-btn:disabled {
+    background: #bdc3c7;
+    cursor: not-allowed;
+}
+
+.submit-btn:hover:not(:disabled) {
+    background: #2980b9;
+}
+
+/* Result Messages */
+.result-message {
+    margin-top: 20px;
+}
+
+.result {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.result.correct {
+    color: #2ecc71;
+}
+
+.result.incorrect {
+    color: #e74c3c;
+}

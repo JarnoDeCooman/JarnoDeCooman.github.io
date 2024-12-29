@@ -1,0 +1,25 @@
+<div class="game-container">
+  <h1>Memory Spel</h1>
+
+  <div class="instructions">
+    <p><strong>Welkom bij het Memory Spel!</strong></p>
+    <p>
+      Het doel is om alle paren van kaarten te vinden. Klik op een kaart om deze
+      om te draaien en zoek het bijbehorende paar. Match alle kaarten om te winnen!
+    </p>
+    <p>Veel plezier en succes!</p>
+  </div>
+
+  <div class="card-grid">
+    @for (card of cards; track $index; let i = $index) {
+    <div class="card" (click)="flipCard(card)" [ngClass]="{'flipped': card.isFlipped, 'matched': card.isMatched}">
+      @if (card.isFlipped) {
+        <img [src]="card.image" class="card-image">
+      }
+      @else {
+        <div class="card-back">?</div>
+      }
+    </div>
+    }
+  </div>
+</div>

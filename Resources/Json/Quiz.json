@@ -1,0 +1,55 @@
+{
+    "questions": [
+      {
+        "question": "Wanneer werd de eerste auto ontworpen?",
+        "options": ["1886", "1901", "1879", "1893"],
+        "correctAnswer": "U2FsdGVkX18B8KyFtO2b/wsryDfNBtTozT+1tVNQG20="
+      },
+      {
+        "question": "Wat bouwde Porsche voordat ze auto's maakten?",
+        "options": ["Tanks", "Vliegtuigen", "Fietsen", "Motorfietsen", "Niets"],
+        "correctAnswer": "U2FsdGVkX18qWVxvf2NalBuA3gljO2gfd5Qxpu/q1+w="
+      },
+      {
+        "question": "In welke groep maakt Cupra deel uit?",
+        "options": ["Volkswagen Group", "Ford Motor Company", "Toyota", "Hyundai"],
+        "correctAnswer": "U2FsdGVkX1/+PdGPf/rqA9iZpSPYSs1pN+8fBRupcd5NxVf3Xc0RpJhYpraImrQD"
+      },
+      {
+        "question": "Wat was de eerste massaal geproduceerde auto?",
+        "options": ["Ford Model T", "Chevrolet Suburban", "Volkswagen Beetle", "Honda Civic"],
+        "correctAnswer": "U2FsdGVkX1/qD8XZueTPzvNQ24cWFUr5U3+4AuFN9G8="
+      },
+      {
+        "question": "Wat is de snelste auto ter wereld?",
+        "options": ["Bugatti Chiron Super Sport", "Koenigsegg Jesko Absolute", "SSC Tuatara", "Tesla Roadster"],
+        "correctAnswer": "U2FsdGVkX18ENqWEGtOmAvCbdtMJod1hOwH7Smqacj7HFm1/d8dHUPeKS7kuzLDq"
+      },
+      {
+        "question": "Wat is de best verkochte auto aller tijden?",
+        "options": ["Toyota Corolla", "Volkswagen Golf", "Honda Civic", "Ford F-Series"],
+        "correctAnswer": "U2FsdGVkX193fjrGOqi/yTovXpB46XkNUR7EsHtFrkI="
+      },
+      {
+        "question": "Wat is het belangrijkste ingrediënt in chocolade?",
+        "options": ["Cacaobonen", "Suiker", "Melk", "Vanille"],
+        "correctAnswer": "U2FsdGVkX1/D/WzXYtQi5Tz6S2XOqppoAyOIWeHouTI="
+      },
+      {
+        "question": "Welk land consumeert de meeste chocolade per capita in 2024?",
+        "options": ["Zwitserland", "Duitsland", "België", "Verenigde Staten"],
+        "correctAnswer": "U2FsdGVkX1+mr+GDvLNLK9XSIpDuDasyJ6DRxiU3fCo="
+      },
+      {
+        "question": "Welke autobouwer produceerde het eerste hybride voertuig?",
+        "options": ["Toyota", "Honda", "Ford", "Porsche"],
+        "correctAnswer": "U2FsdGVkX1+PPBsnPTMp/1f9NefRhnAxOTJWSRCFp04="
+      },
+      {
+        "question": "Waar staat SUV voor?",
+        "options": ["Sport Utility Vehicle", "Super Ultimate Vehicle", "Small Urban Van", "Sport Urban Vehicle"],
+        "correctAnswer": "U2FsdGVkX1+eUG/OX7uLgxVnyfxmNXJZgV9lIrqAZpGeHbMUHbRBd0jHEgBl0pMm"
+      }
+    ]
+  }
+  

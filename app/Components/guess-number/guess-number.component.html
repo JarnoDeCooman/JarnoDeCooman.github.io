@@ -1,0 +1,24 @@
+
+<div class="game-container">
+    @if(AmountGuesses > 0)
+    {
+        <div class="guess-counter">Aantal keer geraden: {{ AmountGuesses }}</div>
+    }
+    <h1>Raad het getal</h1>
+    <p>Probeer het getal tussen 0 en 9999 te raden!</p>
+    @if(feedback)
+    {
+        <p  class="feedback">{{ feedback }}</p>
+    }
+    <input 
+      type="number" 
+      [(ngModel)]="userGuess" 
+      class="guess-input" 
+      placeholder="Voer je gok in..." 
+    />
+    @if(recentFeedback)
+    {
+        <div class="recent-feedback">Laatste actie: {{ recentFeedback }}</div>
+    }
+    <button (click)="makeGuess()" [disabled]="userGuess === null" class="guess-btn">Enter</button>
+  </div>

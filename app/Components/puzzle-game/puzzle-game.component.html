@@ -1,0 +1,50 @@
+<div class="game-container">
+  @if(currentCategory)
+  {
+    <span class="progress">{{ solvedQuestionCount(currentCategory) }}/{{ totalQuestions(currentCategory) }} </span>
+    <header class="category-header">
+      <h2>Los de Anagram op: {{ currentCategory.id }}</h2>
+    </header>
+    
+    <div class="anagram-section">
+      <p class="anagram-prompt">Herschik de letters om een woord te vormen:</p>
+      <p class="anagram">{{ currentCategory.questions[currentAnagramIndex].anagram }}</p>
+      
+      <input 
+        type="text" 
+        [(ngModel)]="userAnswer" 
+        (input)="this.userAnswer = this.ToPascalCase(this.userAnswer)" 
+        class="answer-input" 
+        placeholder="Voer je antwoord in">
+      
+    @if(feedback)
+    {
+      <p class="feedback">{{ feedback }}</p>
+    }
+      <button class="btn-check" (click)="checkAnswer()">Controleer Antwoord</button>
+    </div>
+      <button class="btn-back" (click)="currentCategory = null">← Ga terug</button>
+  }
+  @else
+  {
+    <div class="category-selection">
+      <h2>Kies een categorie:</h2>
+      @for (item of Categories; track $index) {
+        <button 
+          class="btn-category" 
+          [disabled]="solvedQuestionCount(item) == totalQuestions(item)" 
+          (click)="selectCategory(item)">
+          {{ item.id }}
+          <span class="category-progress">
+            {{ solvedQuestionCount(item) }}/{{ totalQuestions(item) }}
+          </span>
+        </button>
+      }
+    </div>
+  }
+  
+  @if(unsolvedAnagramCount === 0)
+  {
+    <p class="game-completion">Gefeliciteerd! Je hebt alle anagrammen opgelost.</p>
+  }
+</div>

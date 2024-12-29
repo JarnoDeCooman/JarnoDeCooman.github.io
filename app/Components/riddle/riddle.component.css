@@ -1,0 +1,110 @@
+.game-container {
+    text-align: center;
+    max-width: 500px; /* Max-width allows better responsiveness */
+    margin: 50px auto;
+    padding: 30px; /* Balanced padding */
+    background: linear-gradient(to bottom, #ffffff, #f9f9f9);
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+    box-sizing: border-box; /* Ensure padding doesn't affect layout */
+    overflow: hidden; /* Prevents content from overflowing */
+    width: 100%; /* Ensures container is fully responsive */
+}
+
+.riddle-counter {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #3498db;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+h1 {
+    font-size: 24px;
+    color: #34495e;
+    margin-bottom: 15px;
+}
+
+.riddle {
+    margin: 20px 0;
+    font-size: 18px;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.answer-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 20px; /* Margin between riddle and answer */
+}
+
+.answer-container:focus-within {
+    border-color: #3498db;
+    outline: none;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+}
+
+.answer-container div {
+    margin-right: 5px;
+    max-width: 60%; /* Limiting width of the article */
+}
+
+.answer-input {
+    font-size: 16px;
+    width: 100%;
+    border: none; /* Remove border from input */
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.answer-input:focus {
+    outline: none;
+}
+
+.answer-btn {
+    padding: 12px 25px;
+    font-size: 16px;
+    color: white;
+    background-color: #3498db;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 20px; /* Space between button and feedback */
+}
+
+.answer-btn:hover:not(:disabled) {
+    background-color: #2980b9;
+    transform: scale(1.05); /* Slight hover scale effect */
+}
+
+.answer-btn:disabled {
+    background-color: #bdc3c7;
+    cursor: not-allowed;
+}
+
+.feedback {
+    margin: 12px 0;
+    font-size: 18px;
+    font-weight: bold;
+    color: #34495e;
+}
+
+.success {
+    margin-top: 20px;
+    font-size: 20px;
+    color: #27ae60;
+    font-weight: bold;
+}

@@ -1,0 +1,36 @@
+<div class="game-container">
+    <!-- Difficulty selector -->
+    <div class="option-container">
+      <label for="difficulty">Kies Moeilijkheid:</label>
+      <select id="difficulty" (change)="updateDifficulty($event)" [value]="difficulty">
+        <option value="40">Makkelijk</option>
+        <option value="50">Medium</option>
+        <option value="55" selected>Moeilijk</option>
+      </select>
+    </div>
+    <su-grid [sudoku]="sudoku" [(activeField)]="activeField"/>
+
+<div class="options">
+    <button class="btn" (click)="erase()">
+      Erase
+    </button>
+    <button 
+  mat-raised-button 
+  [ngClass]="noteMode ? 'notes-on' : 'notes-off'" 
+  (click)="noteMode = !noteMode">
+  Notes
+</button>
+
+
+  </div>
+
+<div class="controls">
+    @for (button of numberButtons; track $index) {
+  <button class="btn"
+          mat-button
+          [disabled]="button.disabled"
+          (click)="insertNumber(button.number)">
+    {{ button.number }}
+  </button>}
+</div>
+</div>

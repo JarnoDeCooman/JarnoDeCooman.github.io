@@ -1,0 +1,26 @@
+
+<div class="game-container">
+    <div class="riddle-counter">Riddle {{ currentRiddleIndex + 1 }} van {{ riddles.length }}</div>
+    <h1>Raadselspel</h1>
+    <p class="riddle">{{ riddles[currentRiddleIndex].question }}</p>
+    <div class="answer-container">
+        <ng-container>
+            <!-- Article Text Displayed Inside the Same Container -->
+            <div class="article-text-container">
+                <span class="article-text">{{ riddles[currentRiddleIndex].Article }}</span>
+            </div>
+            <!-- Input Field for Answer -->
+            <input 
+                type="text" 
+                [(ngModel)]="userAnswer" 
+                class="answer-input" 
+                placeholder="Wat is je antwoord..." 
+            >
+        </ng-container>
+    </div>
+    @if(feedback)
+    {
+        <p class="feedback">{{ feedback }}</p>
+    }
+    <button (click)="checkAnswer()" [disabled]="userAnswer.trim() === ''" class="answer-btn">Enter</button>
+  </div>

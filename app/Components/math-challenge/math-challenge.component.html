@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="button-group">
+    <button class="btn" (click)="CreateBoard()">Create</button>
+    <button class="btn" (click)="Evaluate()">Evaluate</button>
+  </div>
+
+  <div class="grid" 
+       [style.gridTemplateColumns]="'repeat(' + board[0].length + ', 1fr)'">
+    @for (row of board; track $index; let i = $index) {
+      @for (cell of row; track $index; let j = $index) {
+        @if(editList[i][j]) {
+          <div class="cell">
+            <input class=" input" type="text" [(ngModel)]="board[i][j]"/>
+          </div>
+        } @else if (cell !== null) {
+          <div class="cell">{{cell}}</div>
+        } @else {
+          <div class="empty-cell"></div>
+        }
+      }
+    }
+  </div>
+</div>

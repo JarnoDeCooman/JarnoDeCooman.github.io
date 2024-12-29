@@ -1,0 +1,31 @@
+<div class="quiz-container">
+    <h2 class="quiz-title">Quiz</h2>
+    <div class="quiz-content">
+    <p class="question-text">{{ questions[currentQuestionIndex].question }}</p>
+</div>
+    <div class="options-list">
+        @for (option of questions[currentQuestionIndex].options; track $index; let i = $index) {
+            <div class="option-item">
+                <button 
+                class="option-btn" (click)="selectedOption = option" [class.selected]="selectedOption === option">{{ option }}</button>
+            </div>
+        }
+    </div>
+
+    <div class="quiz-actions">
+        <button 
+            (click)="checkAnswer()" 
+            [disabled]="selectedOption === null" 
+            class="submit-btn">
+            Submit
+        </button>
+    </div>    
+    <div class="result-message">
+        @if(isCorrect === true) {
+            <p class="result correct">Correct!</p>
+        }
+        @else if(isCorrect === false) {
+            <p class="result incorrect">Niet juist</p>
+        }
+    </div>
+</div>

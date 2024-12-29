@@ -1,0 +1,29 @@
+@for (row of sudoku; track $index; let rowIndex = $index) {
+<ng-container >@for (field of row; track $index; let colIndex = $index) {
+  <div class="cell"
+       [class.top]="rowIndex % 3 === 0"
+       [class.bottom]="rowIndex % 3 === 2"
+       [class.left]="colIndex % 3 === 0"
+       [class.right]="colIndex % 3 === 2"
+       [class.readonly]="field.readonly"
+       [class.highlight-row]="rowIndex === currentRow"
+       [class.highlight-col]="colIndex === currentCol"
+       [class.highlight-same]="activeField?.value && activeField?.value === field?.value"
+       [class.active]="field === activeField"
+       [class.full-col-color]="colIndex === currentCol && field.value"
+       [class.full-color]="rowIndex === currentRow && field.value"
+       (click)="onFieldClick(field)">
+    <div class="value">{{ field.value }}</div>
+    @if(!field.value && field.notes!.length > 0)
+    {
+      <ng-container >
+        @for (note of field.notes; track $index) {
+        <div class="note note-{{ note }}">
+          <div>{{ note }}</div>
+        </div>}
+      </ng-container>
+    }
+  </div>}
+</ng-container>
+
+}
