@@ -15,7 +15,7 @@ export class ProgressService {
   private gameProgress: Progress[] = [];
   private readonly fileUrl = 'Resources/Json/Progress.json'; // Correct path
 
-  constructor(private http: HttpClient) {}
+  constructor() {}
 
   setGameCompleted(id: string): void {
     const progress = this.gameProgress.find((gp: Progress) => gp.id === id);
@@ -38,21 +38,11 @@ export class ProgressService {
     });
     saveAs(jsonBlob, this.fileUrl);  // This will trigger the download
   }
-  
+
   private saveProgress(): void {
-    this.http.post(this.fileUrl, this.gameProgress).subscribe({
-      next: () => console.log('Progress saved successfully'),
-      error: (err) => console.error('Failed to save progress', err),
-    });
   }
 
   loadProgress(): void {
-    this.http.get<Progress[]>(this.fileUrl).subscribe({
-      next: (savedProgress) => {
-        this.gameProgress = savedProgress || [];
-      },
-      error: (err) => console.error('Failed to load progress', err),
-    });
   }
 }
 
