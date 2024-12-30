@@ -5,6 +5,7 @@ import { ProgressService } from '../../progress-service.service';
 import { Router } from '@angular/router';
 import { decryptAnswer, encryptAnswer } from '../../Utils';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 interface Anagram {
   word: string;
   anagram: string;
@@ -18,9 +19,10 @@ interface Category{
 @Component({
   selector: 'app-puzzle-game',
   standalone:true,
-  imports: [FormsModule],
+  imports: [FormsModule, HttpClientModule],
   templateUrl: './puzzle-game.component.html',
   styleUrls: ['./puzzle-game.component.css'],
+  providers: [ProgressService] ,
 })
 export class PuzzleGameComponent extends BaseGameComponent{
  Categories: Category[] = [

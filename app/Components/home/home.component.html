@@ -1,24 +1,30 @@
 <!-- home.component.html -->
 <div class="home-container">
-    @for (box of boxes; track $index) {
+  <!-- Loop through the boxes -->
+  @for (box of boxes; track $index) {
+    <button [disabled]="box.completed" class="box" [ngClass]="{ 'locked': !box.completed, 'unlocked': box.completed }">
+      @if (!box.completed) {
+        <a [routerLink]="['', box.gameName]">
+        <!-- If the box is locked (not completed) show a locked icon -->
+          <span class="locked-icon">🔒</span>
+        </a>
+        }
+        <!-- If all games are completed, show the letter -->
+        @else if(completedGames === boxes.length) {
+          <a class="completed-box">{{decrypt(box.letter)}}</a>
+        }
+        @else if(box.completed)
+        {
+          <a [routerLink]="['', box.gameName]">
+          <!-- If the box is locked (not completed) show a locked icon -->
+          <span class="unlocked-icon">🔓</span>
+          </a>
+        }
+    </button>
+  }
+</div>
 
-        <div class="box" [ngClass]="{ 'locked': !box.completed }">
-            <a [routerLink]="['', box.gameName]">
-            @if (!box.completed) 
-            {
-               <span>🔒</span>
-                
-            }
-            @else {
-                <div>{{box.letter}}</div>}
-                </a>
-          </div>
-
-    }
-  </div>
-  
 <!-- Progress Tracker (Optional) -->
 <div class="progress">
-    <p>Progress: {{ completedGames }} / 9 games completed</p>
-  </div>
-  
+  <p class="progress-text">Progress: {{ completedGames }} / {{boxes.length}} games completed</p>
+</div>

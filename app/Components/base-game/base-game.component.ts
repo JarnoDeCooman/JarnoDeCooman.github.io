@@ -1,5 +1,5 @@
 // base-game.component.ts
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProgressService } from '../../progress-service.service';
 
@@ -10,6 +10,7 @@ export abstract class BaseGameComponent implements OnInit {
   
   // Each game will need its index to mark as completed in ProgressService
   protected gameIndex: number = 0;
+  @Input() fileSha: string | undefined;
 
   constructor(
     protected progressService: ProgressService,
@@ -24,7 +25,19 @@ export abstract class BaseGameComponent implements OnInit {
 
   // Common method to mark a game as completed
   protected markAsCompleted(): void {
-    this.progressService.setGameCompleted(typeof(this));
+    this.saveProgress();
     this.router.navigate(['/home']);  // Navigate to home after completion
+  }
+  
+  saveProgress() {
+    if (!this.fileSha) {
+      console.error('SHA is required to update the file');
+      return;
+    }
+
+    // Update the Progress data in the repository
+    this.progressService.updateProgressData(this.constructor.name, this.fileSha).subscribe(() => {
+      console.log('Progress data saved successfully');
+    });
   }
 }

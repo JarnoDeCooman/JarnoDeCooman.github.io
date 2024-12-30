@@ -3,12 +3,14 @@ import { BaseGameComponent } from '../base-game/base-game.component';
 import { ProgressService } from '../../progress-service.service';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-guess-number',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, HttpClientModule],
   templateUrl: './guess-number.component.html',
+  providers: [ProgressService] ,
   styleUrl: './guess-number.component.css'
 })
 export class GuessNumberComponent extends BaseGameComponent{

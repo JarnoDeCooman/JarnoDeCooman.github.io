@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { saveAs } from 'file-saver';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { map, Observable } from 'rxjs';
 
 export interface Progress {
   id: string;
@@ -12,37 +11,52 @@ export interface Progress {
   providedIn: 'root',
 })
 export class ProgressService {
-  private gameProgress: Progress[] = [];
-  private readonly fileUrl = 'Resources/Json/Progress.json'; // Correct path
+  private fileUrl = 'https://raw.githubusercontent.com/JarnoDeCooman/JarnoDeCooman.github.io/main/Resources/Json/Progress.json';
+  private token = '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'; 
 
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
-  setGameCompleted(id: string): void {
-    const progress = this.gameProgress.find((gp: Progress) => gp.id === id);
-    if (progress) {
-      progress.completed = true;
-    } else {
-      this.gameProgress.push({ id, completed: true });
-    }
-    this.saveProgress();
-  }
-
-  getGameProgress(): Progress[] {
-    return this.gameProgress;
-  }
-
-  // Save progress to the backend
-  saveProgresses(progress: Progress[]): void {
-    const jsonBlob = new Blob([JSON.stringify(progress, null, 2)], {
-      type: 'application/json'
+  // Fetch the Progress data from the GitHub repository
+  getProgressData(): Observable<{ data: Progress[]; sha: string }> {
+    const headers = new HttpHeaders({
+      Authorization: `token ${this.token}`,
     });
-    saveAs(jsonBlob, this.fileUrl);  // This will trigger the download
+
+    return this.http.get<any>(this.fileUrl, { headers }).pipe(
+      map((response) => {
+        const content = atob(response.content); // Decode Base64 content
+        const jsonData = JSON.parse(content); // Parse JSON
+        return { data: jsonData.Progress as Progress[], sha: response.sha }; // Return data and sha
+      })
+    );
   }
 
-  private saveProgress(): void {
-  }
+  // Update the Progress data in the GitHub repository
+  updateProgress(data: Progress[], sha: string): Observable<any> {
+    const headers = new HttpHeaders({
+      Authorization: `token ${this.token}`,
+    });
 
-  loadProgress(): void {
+    const body = {
+      message: 'Update Progress data',
+      content: btoa(JSON.stringify({ Progress: data })), // Convert to Base64
+      sha: sha, // Current SHA of the file
+    };
+
+    return this.http.put<any>(this.fileUrl, body, { headers });
+  }
+  // Update the Progress data in the GitHub repository
+  updateProgressData(data: string, sha: string): Observable<any> {
+    const headers = new HttpHeaders({
+      Authorization: `token ${this.token}`,
+    });
+
+    const body = {
+      message: 'Update Progress data',
+      content: btoa(JSON.stringify({ Progress: data })), // Convert to Base64
+      sha: sha, // Current SHA of the file
+    };
+
+    return this.http.put<any>(this.fileUrl, body, { headers });
   }
 }
-

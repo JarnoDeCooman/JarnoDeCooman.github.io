@@ -3,12 +3,14 @@ import { ProgressService } from '../../progress-service.service';
 import { Router } from '@angular/router';
 import { BaseGameComponent } from '../base-game/base-game.component';
 import { decryptAnswer, encryptAnswer } from '../../Utils';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-picture',
   standalone: true,
-  imports: [],
+  imports: [HttpClientModule],
   templateUrl: './picture.component.html',
+  providers: [ProgressService] ,
   styleUrl: './picture.component.css'
 })
 export class PictureComponent extends BaseGameComponent {

@@ -5,6 +5,8 @@ import { Sudoku, SudokuField } from './Sudoku';
 import { GridComponent } from './grid/grid.component';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { ProgressService } from '../../progress-service.service';
+import { HttpClientModule } from '@angular/common/http';
 
 
 const between = (newValue: number, min: number, max: number) => {
@@ -19,8 +21,9 @@ export interface NumberButton {
 @Component({
   selector: 'app-sudoku',
   standalone: true,
-  imports: [GridComponent, CommonModule],
+  imports: [GridComponent, CommonModule, HttpClientModule],
   templateUrl: './sudoku.component.html',
+    providers: [ProgressService] ,
   styleUrl: './sudoku.component.css'
 })
 export class SudokuComponent extends BaseGameComponent implements OnChanges {

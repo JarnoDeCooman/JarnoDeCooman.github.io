@@ -2,12 +2,14 @@ import { Component } from '@angular/core';
 import { BaseGameComponent } from '../base-game/base-game.component';
 import { ProgressService } from '../../progress-service.service';
 import { Router } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-tic-tac-toe',
   standalone: true,
-  imports: [],
+  imports: [HttpClientModule],
   templateUrl: './tic-tac-toe.component.html',
+  providers: [ProgressService] ,
   styleUrl: './tic-tac-toe.component.css'
 })
 export class TicTacToeComponent extends BaseGameComponent{

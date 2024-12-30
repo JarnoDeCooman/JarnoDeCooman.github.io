@@ -3,7 +3,7 @@ import { BaseGameComponent } from '../base-game/base-game.component';
 import { NgClass } from '@angular/common';
 import { ProgressService } from '../../progress-service.service';
 import { Router } from '@angular/router';
-import { DomSanitizer } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 // card.model.ts
 export interface Card {
   id: number;        // Unique identifier for the card
@@ -14,8 +14,9 @@ export interface Card {
 @Component({
   selector: 'app-memory-game',
   standalone: true,
-  imports: [NgClass],
+  imports: [NgClass, HttpClientModule],
   templateUrl: './memory-game.component.html',
+  providers: [ProgressService] ,
   styleUrl: './memory-game.component.css'
 })
 export class MemoryGameComponent extends BaseGameComponent implements OnInit {

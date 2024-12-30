@@ -12,57 +12,51 @@ import { GuessNumberComponent } from '../guess-number/guess-number.component';
 import { RiddleComponent } from '../riddle/riddle.component';
 import { SudokuComponent } from '../sudoku/sudoku.component';
 import { PuzzleGameComponent } from '../puzzle-game/puzzle-game.component';
-import { encryptAnswer } from '../../Utils';
+import { decryptAnswer, encryptAnswer } from '../../Utils';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [NgClass, RouterLink],
+  imports: [NgClass, RouterLink, HttpClientModule],
+  providers: [ProgressService] ,
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
+decrypt(arg0: string): string {
+  return decryptAnswer(arg0);
+}
   // Track the progress of each game
   boxes = [
-    { gameName: typeof(TicTacToeComponent), letter: 'U2FsdGVkX1+BeVxxPBtSxFNVkHXX9sSY8EZCpOFP/mQ=', completed: false },
-    { gameName: typeof(MathChallengeComponent), letter: 'U2FsdGVkX1/w3o6F416bVLkEDqjph83atP0YhTu5IeA=', completed: false },
-    { gameName: typeof(MemoryGameComponent), letter: 'U2FsdGVkX18KkxvamjZiw9qPePKanfY1h89J0pqClTE=', completed: false },
-    { gameName: typeof(QuizComponent), letter: 'U2FsdGVkX1/KOng4up5LiunRj3BRc0vMw2/LQwn+Cu8=', completed: false },
-    { gameName: typeof(PictureComponent), letter: 'U2FsdGVkX19eNrhs4WLzUHYwYSEDI5qpFvkumRgFzLA=', completed: false },
-    { gameName: typeof(GuessNumberComponent), letter: 'U2FsdGVkX1/abPpy4lnr99KE0zyiRS3CuOMXkMgAVk8=', completed: false },
-    { gameName: typeof(RiddleComponent), letter: 'U2FsdGVkX1+avca0sxDiCE376DIVJjxH5gkxW6YNS2s=', completed: false },
-    { gameName: typeof(SudokuComponent), letter: 'U2FsdGVkX1965QoPh1vY905ZXFo4ad/byCettamaQzY=', completed: false },
-    { gameName: typeof(PuzzleGameComponent), letter: 'U2FsdGVkX18sKOaVYScR4dzNAJ9LHQ/61OeuHzRtgZE=', completed: false },
+    { gameName: TicTacToeComponent.name, letter: 'U2FsdGVkX1+BeVxxPBtSxFNVkHXX9sSY8EZCpOFP/mQ=', completed: false },
+    { gameName: MathChallengeComponent.name, letter: 'U2FsdGVkX1/w3o6F416bVLkEDqjph83atP0YhTu5IeA=', completed: false },
+    { gameName: MemoryGameComponent.name, letter: 'U2FsdGVkX18KkxvamjZiw9qPePKanfY1h89J0pqClTE=', completed: false },
+    { gameName: QuizComponent.name, letter: 'U2FsdGVkX1/KOng4up5LiunRj3BRc0vMw2/LQwn+Cu8=', completed: false },
+    { gameName: PictureComponent.name, letter: 'U2FsdGVkX19eNrhs4WLzUHYwYSEDI5qpFvkumRgFzLA=', completed: false },
+    { gameName: GuessNumberComponent.name, letter: 'U2FsdGVkX1/abPpy4lnr99KE0zyiRS3CuOMXkMgAVk8=', completed: false },
+    { gameName: RiddleComponent.name, letter: 'U2FsdGVkX1+avca0sxDiCE376DIVJjxH5gkxW6YNS2s=', completed: false },
+    { gameName: SudokuComponent.name, letter: 'U2FsdGVkX1965QoPh1vY905ZXFo4ad/byCettamaQzY=', completed: false },
+    { gameName: PuzzleGameComponent.name, letter: 'U2FsdGVkX18sKOaVYScR4dzNAJ9LHQ/61OeuHzRtgZE=', completed: false },
   ];
+  fileSha: string | undefined;
 
   constructor(private progressService: ProgressService) {}
 
-  ngOnInit(): void {
-    // Correcting the mapping and calling saveProgresses
-    this.progressService.saveProgresses(
-      this.boxes.map(box => {
-        return {
-          id: box.gameName,
-          completed: box.completed
-        } as Progress;
-      })
-    );
-        this.loadProgress();
-  }
-
-  // Load the current progress
-  loadProgress(): void {
-    const progress = this.progressService.getGameProgress();
-    progress.forEach(pro => {
-      var b = this.boxes.find(box => box.gameName === pro.id);
-      if(b)
-      {
-        b.completed = pro.completed;
-      }
+  ngOnInit() {
+    // Fetch the Progress data when the component is initialized
+    this.progressService.getProgressData().subscribe((response) => {
+      response.data.forEach(p => {
+        var box = this.boxes.find(b => b.gameName === p.id);
+        if(box)
+          {
+            box.completed = p.completed
+          }
+        });
+        this.fileSha = response.sha;
+      });
     }
-    )
-  }
-
+  
   // Calculate the number of completed games
   get completedGames(): number {
     return this.boxes.filter(box => box.completed).length;

@@ -4,12 +4,14 @@ import { ProgressService } from '../../progress-service.service';
 import { Router } from '@angular/router';
 import * as questionsData from '../../../Resources/Json/Quiz.json';
 import { decryptAnswer, encryptAnswer } from './../../Utils';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-quiz',
   standalone: true,
-  imports: [],
+  imports: [HttpClientModule],
   templateUrl: './quiz.component.html',
+  providers: [ProgressService] ,
   styleUrl: './quiz.component.css'
 })
 export class QuizComponent extends BaseGameComponent{

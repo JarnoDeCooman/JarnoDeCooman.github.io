@@ -4,12 +4,14 @@ import { FormsModule } from '@angular/forms';
 import { ProgressService } from '../../progress-service.service';
 import { Router } from '@angular/router';
 import { decryptAnswer, encryptAnswer } from '../../Utils';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-riddle',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, HttpClientModule],
   templateUrl: './riddle.component.html',
+  providers: [ProgressService] ,
   styleUrl: './riddle.component.css'
 })
 export class RiddleComponent extends BaseGameComponent{

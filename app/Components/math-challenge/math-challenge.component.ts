@@ -5,6 +5,7 @@ import { BaseGameComponent } from '../base-game/base-game.component';
 import { FormsModule } from '@angular/forms';
 import { NgClass } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 interface Position {
   x: number;
@@ -27,9 +28,10 @@ interface Cell {
 @Component({
   selector: 'app-math-challenge',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, HttpClientModule],
   templateUrl: './math-challenge.component.html',
-  styleUrls: ['./math-challenge.component.css']
+  styleUrls: ['./math-challenge.component.css'],
+  providers: [ProgressService] ,
 })
 export class MathChallengeComponent extends BaseGameComponent {
   Count: number = 15;
