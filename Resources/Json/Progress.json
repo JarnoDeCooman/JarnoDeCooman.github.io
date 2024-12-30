@@ -1,1 +1,40 @@
-[{"id":"_TicTacToeComponent","completed":true},{"id":"_MathChallengeComponent","completed":false},{"id":"_MemoryGameComponent","completed":false},{"id":"_QuizComponent","completed":false},{"id":"_PictureComponent","completed":false},{"id":"_GuessNumberComponent","completed":false},{"id":"_RiddleComponent","completed":false},{"id":"_SudokuComponent","completed":false},{"id":"_PuzzleGameComponent","completed":false}]
+{
+"Progress": [
+    {
+      "id":"_TicTacToeComponent",
+      "completed":false
+    },
+    {
+      "id":"_MathChallengeComponent",
+      "completed":false
+    },
+    {
+      "id":"_MemoryGameComponent",
+      "completed":false
+    },
+    {
+      "id":"_QuizComponent",
+      "completed":false
+    },
+    {
+      "id":"_PictureComponent",
+      "completed":false
+    },
+    {
+      "id":"_GuessNumberComponent",
+      "completed":false
+    },
+    {
+      "id":"_RiddleComponent",
+      "completed":false
+    },
+    {
+      "id":"_SudokuComponent",
+      "completed":false
+    },
+    {
+      "id":"_PuzzleGameComponent",
+      "completed":false
+    }
+]
+}
