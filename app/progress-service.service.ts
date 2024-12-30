@@ -12,7 +12,7 @@ export interface Progress {
 })
 export class ProgressService {
   private fileUrl = 'https://api.github.com/repos/JarnoDeCooman/JarnoDeCooman.github.io/contents/Resources/Json/Progress.json';
-  private token = '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'; 
+  private token = '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'; 
   public fileSha: string | undefined;
   constructor(private http: HttpClient) {}
 
