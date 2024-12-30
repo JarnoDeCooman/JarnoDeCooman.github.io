@@ -39,22 +39,25 @@ decrypt(arg0: string): string {
     { gameName: SudokuComponent.name, letter: 'U2FsdGVkX1965QoPh1vY905ZXFo4ad/byCettamaQzY=', completed: false },
     { gameName: PuzzleGameComponent.name, letter: 'U2FsdGVkX18sKOaVYScR4dzNAJ9LHQ/61OeuHzRtgZE=', completed: false },
   ];
-  fileSha: string | undefined;
 
   constructor(private progressService: ProgressService) {}
 
   ngOnInit() {
     // Fetch the Progress data when the component is initialized
     this.progressService.getProgressData().subscribe((response) => {
-      response.data.forEach(p => {
-        var box = this.boxes.find(b => b.gameName === p.id);
-        if(box)
-          {
-            box.completed = p.completed
-          }
+      if(response)
+      {
+
+        response.forEach((p: { id: string; completed: boolean; }) => {
+          var box = this.boxes.find(b => b.gameName === p.id);
+          if(box)
+            {
+              box.completed = p.completed
+            }
+          });
+          this.progressService.fileSha = response.sha;
+        }
         });
-        this.fileSha = response.sha;
-      });
     }
   
   // Calculate the number of completed games
