@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map, Observable, switchMap } from 'rxjs';
+import { decryptAnswer } from './Utils';
 
 export interface Progress {
   id: string;
