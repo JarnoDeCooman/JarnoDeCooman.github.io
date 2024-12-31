@@ -34,6 +34,7 @@ interface Cell {
   providers: [ProgressService] ,
 })
 export class MathChallengeComponent extends BaseGameComponent {
+  isCorrect: boolean | null = null;
   Count: number = 15;
   RemoveCount: number = 15;
   editList: boolean[][] = [];
@@ -61,6 +62,7 @@ export class MathChallengeComponent extends BaseGameComponent {
   };
 
   override ngOnInit(): void {
+    this.ID = 'MathChallengeComponent';
     super.ngOnInit();
     this.CreateBoard();
   }
@@ -445,6 +447,7 @@ private updateBoard(pushIndex: number, matchData: Position): void {
     });
   
     if (!completed) {
+      this.isCorrect = false;
       return;
     }
     // Iterate through all active words
@@ -474,8 +477,10 @@ private updateBoard(pushIndex: number, matchData: Position): void {
 
     // If all words are valid and completed
     if (completed) {
+      this.isCorrect = true;
       this.completeGame();
     }
+    this.isCorrect = false;
   }
   
   GetHorizontalWords(): string[] {

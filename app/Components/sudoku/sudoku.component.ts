@@ -34,6 +34,7 @@ export class SudokuComponent extends BaseGameComponent implements OnChanges {
   difficulty: number = 55;
 
   override ngOnInit(): void {
+    this.ID = 'SudokuComponent';
     const generated = SudokuSolver.generate();
     this.sudoku = generated.map((row: number[]) =>
       row.map((value: number) => ({

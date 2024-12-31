@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { BaseGameComponent } from '../base-game/base-game.component';
 import { decryptAnswer, encryptAnswer } from '../../Utils';
 import { HttpClientModule } from '@angular/common/http';
+import { PathDirectoryService } from '../../path-directory.service';
 
 @Component({
   selector: 'app-picture',
@@ -102,8 +103,9 @@ export class PictureComponent extends BaseGameComponent {
   isCorrect: boolean | null = null;
 
 
-  constructor(progressService: ProgressService, router: Router) {
-    super(progressService, router);
+  constructor(progressService: ProgressService, router: Router, pathdir: PathDirectoryService) {
+    super(progressService, router, pathdir);
+    this.ID = 'PictureComponent';
     this.questions = this.shuffleArray(this.questions);
   }
 

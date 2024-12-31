@@ -4,6 +4,7 @@ import { ProgressService } from '../../progress-service.service';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { PathDirectoryService } from '../../path-directory.service';
 
 @Component({
   selector: 'app-guess-number',
@@ -20,6 +21,14 @@ export class GuessNumberComponent extends BaseGameComponent{
   AmountGuesses: number = 0; // User's current guess
   recentFeedback: string | null = null; // Indicates the last action
 
+  constructor(
+    progressService: ProgressService,
+    router: Router,
+    pathdir: PathDirectoryService
+  ) {
+    super(progressService, router, pathdir);
+    this.ID = 'GuessNumberComponent';
+  }
   // Handle the user's guess
   makeGuess(): void {
     if (this.userGuess === null) {

@@ -2,6 +2,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProgressService } from '../../progress-service.service';
+import { PathDirectoryService } from '../../path-directory.service';
 
 @Component({
   template: ''
@@ -9,11 +10,13 @@ import { ProgressService } from '../../progress-service.service';
 export abstract class BaseGameComponent implements OnInit {
   
   // Each game will need its index to mark as completed in ProgressService
-  protected gameIndex: number = 0;
 
+  ID: string = '';
   constructor(
     protected progressService: ProgressService,
-    protected router: Router
+    protected router: Router,
+    protected pathdir: PathDirectoryService,
+    
   ) {}
 
   ngOnInit(): void {
@@ -33,7 +36,7 @@ export abstract class BaseGameComponent implements OnInit {
   saveProgress() {
 
     // Update the Progress data in the repository
-    this.progressService.updateProgressData(this.constructor.name).subscribe(() => {
+    this.progressService.updateProgressData(this.ID).subscribe(() => {
       console.log('Progress data saved successfully');
     });
   }

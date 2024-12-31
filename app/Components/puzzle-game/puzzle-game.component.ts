@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { decryptAnswer, encryptAnswer } from '../../Utils';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { PathDirectoryService } from '../../path-directory.service';
 interface Anagram {
   word: string;
   anagram: string;
@@ -33,7 +34,7 @@ export class PuzzleGameComponent extends BaseGameComponent{
     { word: 'U2FsdGVkX18u1e7CvyNipMP+2r+yAfL+kCrCo0KwbyY=', anagram: 'natessejTi nV' },
     { word: 'U2FsdGVkX19T4WNOM6WjPcc4ZgRFBI2ZBwF5aCgl6Dg=', anagram: 'moW saTe' },
     { word: 'U2FsdGVkX1+KAE3ly3yGyI1noYHmWoRjZIVcQijg67U=', anagram: 'SaK drmain' },
-    { word: 'U2FsdGVkX18JGz13CNqUmvuehYMV9k54JM9VD01rhLU=', anagram: 'snoreewu akt' }
+    { word: 'U2FsdGVkX18JGz13CNqUmvuehYMV9k54JM9VD01rhLU=', anagram: 'snoreeWu aKt' }
     ]
   },
   {
@@ -83,8 +84,13 @@ export class PuzzleGameComponent extends BaseGameComponent{
   userAnswer: string = '';
   feedback: string | null = null;
 
-  constructor(progressService: ProgressService, router: Router) {
-    super(progressService, router);
+  constructor(
+    progressService: ProgressService,
+    router: Router,
+    pathdir: PathDirectoryService
+  ) {
+    super(progressService, router, pathdir);
+    this.ID = 'PuzzleGameComponent';
     this.shuffleCategories();
 /*
     this.Categories.forEach(c => {

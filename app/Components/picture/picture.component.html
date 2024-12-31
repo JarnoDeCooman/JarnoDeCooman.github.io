@@ -16,14 +16,6 @@
             </div>
         }
     </div>
-    <div class="quiz-actions">
-        <button 
-            (click)="checkAnswer()" 
-            [disabled]="selectedOption === null" 
-            class="submit-btn">
-            Submit
-        </button>
-    </div>
     <div class="result-message">
         @if(isCorrect === true) {
             <p class="result correct">Correct!</p>
@@ -31,5 +23,13 @@
         @else if(isCorrect === false) {
             <p class="result incorrect">Niet juist</p>
         }
+    </div>
+    <div class="quiz-actions">
+        <button 
+            (click)="checkAnswer()" 
+            [disabled]="selectedOption === null" 
+            class="submit-btn">
+            Submit
+        </button>
     </div>
 </div>

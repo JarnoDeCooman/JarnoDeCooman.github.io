@@ -1,39 +1,39 @@
 {
     "Progress": [
       {
-        "id":"_TicTacToeComponent",
+        "id":"TicTacToeComponent",
         "completed":false
       },
       {
-        "id":"_MathChallengeComponent",
+        "id":"MathChallengeComponent",
         "completed":false
       },
       {
-        "id":"_MemoryGameComponent",
+        "id":"MemoryGameComponent",
         "completed":false
       },
       {
-        "id":"_QuizComponent",
+        "id":"QuizComponent",
         "completed":false
       },
       {
-        "id":"_PictureComponent",
+        "id":"PictureComponent",
         "completed":false
       },
       {
-        "id":"_GuessNumberComponent",
+        "id":"GuessNumberComponent",
         "completed":false
       },
       {
-        "id":"_RiddleComponent",
+        "id":"RiddleComponent",
         "completed":false
       },
       {
-        "id":"_SudokuComponent",
+        "id":"SudokuComponent",
         "completed":false
       },
       {
-        "id":"_PuzzleGameComponent",
+        "id":"PuzzleGameComponent",
         "completed":false
       }
     ]

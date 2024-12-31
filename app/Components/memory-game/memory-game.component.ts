@@ -4,6 +4,7 @@ import { NgClass } from '@angular/common';
 import { ProgressService } from '../../progress-service.service';
 import { Router } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { PathDirectoryService } from '../../path-directory.service';
 // card.model.ts
 export interface Card {
   id: number;        // Unique identifier for the card
@@ -25,9 +26,9 @@ export class MemoryGameComponent extends BaseGameComponent implements OnInit {
   matchedCards: number = 0;
   private flipTimeout: any = null;  // Store the timeout reference
 
-  constructor(progressService: ProgressService, router: Router) {
-    super(progressService, router);
-    this.gameIndex = 1; // Set the game index for progress tracking
+  constructor(progressService: ProgressService, router: Router, pathdir: PathDirectoryService) {
+    super(progressService, router, pathdir);
+    this.ID = 'MemoryGameComponent'; // Set the game index for progress tracking
     this.initializeGame();
   }
 

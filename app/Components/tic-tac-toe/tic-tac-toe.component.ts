@@ -3,6 +3,7 @@ import { BaseGameComponent } from '../base-game/base-game.component';
 import { ProgressService } from '../../progress-service.service';
 import { Router } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { PathDirectoryService } from '../../path-directory.service';
 
 @Component({
   selector: 'app-tic-tac-toe',
@@ -20,9 +21,9 @@ export class TicTacToeComponent extends BaseGameComponent{
   difficulty: number; 
   aiStarts: boolean = false;
 
-  constructor(progressService: ProgressService, router: Router) {
-    super(progressService, router);
-    this.gameIndex = 2;
+  constructor(progressService: ProgressService, router: Router, pathdir: PathDirectoryService) {
+    super(progressService, router, pathdir);
+    this.ID = 'TicTacToeComponent';
     this.difficulty = 10;
     this.board = [
       ['', '', ''],

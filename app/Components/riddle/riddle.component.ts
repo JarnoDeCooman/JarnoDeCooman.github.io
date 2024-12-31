@@ -5,6 +5,7 @@ import { ProgressService } from '../../progress-service.service';
 import { Router } from '@angular/router';
 import { decryptAnswer, encryptAnswer } from '../../Utils';
 import { HttpClientModule } from '@angular/common/http';
+import { PathDirectoryService } from '../../path-directory.service';
 
 @Component({
   selector: 'app-riddle',
@@ -35,8 +36,9 @@ export class RiddleComponent extends BaseGameComponent{
   userAnswer: string = '';
   feedback: string | null = null;
 
-  constructor(progressService: ProgressService, router: Router) {
-    super(progressService, router);
+  constructor(progressService: ProgressService, router: Router, pathdir: PathDirectoryService) {
+    super(progressService, router, pathdir);
+    this.ID = 'RiddleComponent';
     this.riddles = this.shuffleArray(this.riddles);
   }
 

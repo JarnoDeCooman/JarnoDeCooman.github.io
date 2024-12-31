@@ -13,14 +13,14 @@ import { SudokuComponent } from './Components/sudoku/sudoku.component';
 export const routes: Routes = [
     { path: '', component: HomeComponent },
     { path: 'home', component: HomeComponent },
-    { path: PuzzleGameComponent.name, component: PuzzleGameComponent },
-    { path: TicTacToeComponent.name, component: TicTacToeComponent },
-    { path: MemoryGameComponent.name, component: MemoryGameComponent },  
-    { path: MathChallengeComponent.name, component: MathChallengeComponent },
-    { path: QuizComponent.name, component: QuizComponent },
-    { path: PictureComponent.name, component: PictureComponent },
-    { path: GuessNumberComponent.name, component: GuessNumberComponent },
-    { path: RiddleComponent.name, component: RiddleComponent },
-    { path: SudokuComponent.name, component: SudokuComponent },
+    { path: 'PuzzleGameComponent', component: PuzzleGameComponent },
+    { path: 'TicTacToeComponent', component: TicTacToeComponent },
+    { path: 'MemoryGameComponent', component: MemoryGameComponent },  
+    { path: 'MathChallengeComponent', component: MathChallengeComponent },
+    { path: 'QuizComponent', component: QuizComponent },
+    { path: 'PictureComponent', component: PictureComponent },
+    { path: 'GuessNumberComponent', component: GuessNumberComponent },
+    { path: 'RiddleComponent', component: RiddleComponent },
+    { path: 'SudokuComponent', component: SudokuComponent },
 
 ];
