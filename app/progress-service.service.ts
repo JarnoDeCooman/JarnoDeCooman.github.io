@@ -19,6 +19,7 @@ export class ProgressService {
 
   // Fetch the Progress data from GitHub using the API
   getProgressData(): Observable<any> {
+    console.log(this.token)
     const headers = new HttpHeaders({
       Authorization: `token ${this.token}`,
     });
